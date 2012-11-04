@@ -5,9 +5,9 @@ License:        LGPL-2.1+
 Summary:        Thai Language Support Routines
 Url:            http://linux.thai.net/plone/TLWG/libthai/
 Group:          System/Libraries
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  libdatrie-devel
+BuildRequires:  pkgconfig(datrie-0.2)
 BuildRequires:  pkg-config
 Requires:       libthai-data >= %{version}
 
