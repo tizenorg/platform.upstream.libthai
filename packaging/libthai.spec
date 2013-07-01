@@ -7,6 +7,7 @@ Url:            http://linux.thai.net/plone/TLWG/libthai/
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Source1001: 	libthai.manifest
 BuildRequires:  pkgconfig(datrie-0.2)
 BuildRequires:  pkg-config
 Requires:       libthai-data >= %{version}
@@ -48,6 +49,7 @@ software using libthai.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --disable-static --with-pic
@@ -62,15 +64,18 @@ make %{?_smp_mflags}
 %postun  -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
 %{_libdir}/libthai.so.*
 
 %files data
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_datadir}/libthai/
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_includedir}/thai/
 %{_libdir}/libthai.so
